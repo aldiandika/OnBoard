@@ -6,6 +6,7 @@ import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTabHost;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ProgressBar;
@@ -14,6 +15,8 @@ public class MainActivity extends FragmentActivity {
 
     ProgressBar progAtas;
     FragmentTabHost tabhost;
+    ViewPager pager;
+    SectionPageAdapter secPage;
 
 //    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -24,7 +27,7 @@ public class MainActivity extends FragmentActivity {
         progAtas = (ProgressBar) findViewById(R.id.progAtas);
         progAtas.getProgressDrawable().setColorFilter(
                 Color.RED, android.graphics.PorterDuff.Mode.SRC_IN);
-
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         tabhost = (FragmentTabHost) findViewById(R.id.tabhost);
         tabhost.setup(this, getSupportFragmentManager(), android.R.id.tabcontent);
 
@@ -34,9 +37,22 @@ public class MainActivity extends FragmentActivity {
         tabhost.addTab(
                 tabhost.newTabSpec("Timeline").setIndicator("Timeline", null),
                 TimeFragment.class, null);
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        secPage = new SectionPageAdapter(getSupportFragmentManager());
+        pager = (ViewPager) findViewById(R.id.pager);
+        setupViewPager(pager);
+
+
 
 //        progAtas.setProgressTintList(ColorStateList.valueOf(Color.RED));
 
 
+    }
+
+    private void setupViewPager(ViewPager viewPager){
+        SectionPageAdapter adapter = new SectionPageAdapter(getSupportFragmentManager());
+        adapter.addFragment(new HomeFragment(),tabhost.getCurrentTabTag());
+        adapter.addFragment(new TimeFragment(),tabhost.getCurrentTabTag());
+        pager.setAdapter(adapter);
     }
 }
