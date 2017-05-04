@@ -74,6 +74,8 @@ public class MainActivity extends FragmentActivity {
                 pager.setCurrentItem(tabhost.getCurrentTab());
             }
         });
+
+
     }
 
 
