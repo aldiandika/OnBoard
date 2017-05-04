@@ -12,7 +12,7 @@
         android:layout_height="36dp"
         android:layout_alignParentRight="true"/>
     <Button
-        android:id="@+id/udahbaca"
+        android:id="@+id/udahBaca"
         android:layout_width="2700dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"

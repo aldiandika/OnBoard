@@ -6,12 +6,14 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 
 /**
@@ -30,6 +32,10 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.home_fragment, container, false);
 
+//        Dialog dialog;
+//        dialog = new Dialog(getActivity());
+//        udahBaca = (Button) dialog.findViewById(R.id.udahBaca);
+
         recyclerView = (RecyclerView) v.findViewById(R.id.recycler_view);
 
         layoutManager = new LinearLayoutManager(getActivity());
@@ -40,10 +46,6 @@ public class HomeFragment extends Fragment {
 
         return v;
     }
-
-
-
-
 }
 
 //pos = adapter.getItemCount();

@@ -2,6 +2,7 @@ package com.example.aldiandika.onboard;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.support.design.widget.Snackbar;
@@ -9,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -52,10 +54,13 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override public void onClick(View v) {
                     posisi = getAdapterPosition();
+
+//                    Context context = v.getContext();
+//                    Intent i = new Intent(context,DialogBox.class);
+//                    context.startActivity(i);
 //                    Snackbar.make(v, "Click detected on item " + posisi,
 //                            Snackbar.LENGTH_LONG)
 //                            .setAction("Action", null).show();
-
                     Dialog dialog;
                     dialog = new Dialog(v.getContext());
                     dialog.setContentView(R.layout.dialog_company);
@@ -65,8 +70,8 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
             });
         }
-
     }
+
 
 
     @Override
@@ -82,6 +87,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         holder.txtHome.setText(Ket[position]);
         holder.txtAng.setText(Prog[position]);
         holder.img1.setImageResource(images[position]);
+
     }
 
     @Override
