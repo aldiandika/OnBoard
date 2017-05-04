@@ -41,10 +41,10 @@ public class MainActivity extends FragmentActivity {
         tabhost.setup(this, getSupportFragmentManager(), android.R.id.tabcontent);
 
         tabhost.addTab(
-                tabhost.newTabSpec("home").setIndicator("Home", null),
+                tabhost.newTabSpec("home").setIndicator(null,getResources().getDrawable(R.drawable.tab_home)),
                 HomeFragment.class, null);
         tabhost.addTab(
-                tabhost.newTabSpec("Timeline").setIndicator("Timeline", null),
+                tabhost.newTabSpec("Timeline").setIndicator(null, getResources().getDrawable(R.drawable.tab_time)),
                 TimeFragment.class, null);
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         secPage = new SectionPageAdapter(getSupportFragmentManager());

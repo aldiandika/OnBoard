@@ -1,6 +1,9 @@
 package com.example.aldiandika.onboard;
 
+import android.app.Dialog;
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -17,6 +20,9 @@ import android.widget.Toast;
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
 
+    public int pos;
+    public static int posisi;
+
     private String[] Ket = {"Perkenalan: Game Lead",
             "Perkenalan: Kepala Departemen",
             "Company Culture"};
@@ -32,10 +38,10 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
     class ViewHolder extends RecyclerView.ViewHolder{
 
-        public int currentItem;
         public TextView txtHome;
         public TextView txtAng;
         public ImageView img1;
+
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -45,15 +51,24 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override public void onClick(View v) {
-                    int position = getAdapterPosition();
+                    posisi = getAdapterPosition();
+//                    Snackbar.make(v, "Click detected on item " + posisi,
+//                            Snackbar.LENGTH_LONG)
+//                            .setAction("Action", null).show();
 
-                    Snackbar.make(v, "Click detected on item " + position,
-                            Snackbar.LENGTH_LONG)
-                            .setAction("Action", null).show();
+                    Dialog dialog;
+                    dialog = new Dialog(v.getContext());
+                    dialog.setContentView(R.layout.dialog_company);
+                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                    dialog.show();
                 }
+
             });
         }
+
     }
+
+
     @Override
     public RecyclerAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext())
@@ -67,11 +82,11 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         holder.txtHome.setText(Ket[position]);
         holder.txtAng.setText(Prog[position]);
         holder.img1.setImageResource(images[position]);
-
     }
 
     @Override
     public int getItemCount() {
         return Ket.length;
+//        return pos;
     }
 }
