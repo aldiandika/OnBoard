@@ -21,13 +21,17 @@ public class MainActivity extends FragmentActivity {
     FragmentTabHost tabhost;
     ViewPager pager;
     SectionPageAdapter secPage;
+    View decorView;
 
 //    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+//        setContentView(R.layout.immersive_activity);
 
+
+        decorView = getWindow().getDecorView();
         progAtas = (ProgressBar) findViewById(R.id.progAtas);
         progAtas.getProgressDrawable().setColorFilter(
                 Color.RED, android.graphics.PorterDuff.Mode.SRC_IN);
@@ -68,13 +72,23 @@ public class MainActivity extends FragmentActivity {
             @Override
             public void onTabChanged(String tabId) {
                 pager.setCurrentItem(tabhost.getCurrentTab());
-//                scrollToCurrentTab();
             }
         });
-        //baru
-
     }
 
+
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        if (hasFocus) {
+            decorView.setSystemUiVisibility(
+                    View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                            | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                            | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                            | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION // hide nav bar
+                            | View.SYSTEM_UI_FLAG_FULLSCREEN // hide status bar
+                            | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);}
+    }
 
 
     private void setupViewPager(ViewPager pager){
