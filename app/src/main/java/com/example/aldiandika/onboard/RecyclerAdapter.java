@@ -22,8 +22,9 @@ import android.widget.Toast;
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
 
-    public int pos;
     public static int posisi;
+    public int itungBeresC;
+
 
     private String[] Ket = {"Perkenalan: Game Lead",
             "Perkenalan: Kepala Departemen",
@@ -33,31 +34,56 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
             R.drawable.ic_action_name,
             R.drawable.ic_action_name };
 
-    private String[] Prog = {"0/2",
-            "0/2",
-            "0/2"};
+    private String[] Prog = {"0",
+            "0",
+            "0"};
 
+    private String[] target = {"2",
+            "2",
+            "2"};
+
+    public int[] klik = new int[target.length];
 
     class ViewHolder extends RecyclerView.ViewHolder{
 
         public TextView txtHome;
         public TextView txtAng;
+        public TextView txtAng1;
         public ImageView img1;
 
 
         public ViewHolder(View itemView) {
             super(itemView);
+            img1 = (ImageView) itemView.findViewById(R.id.img1);
             txtHome = (TextView) itemView.findViewById(R.id.txtHome);
             txtAng = (TextView)itemView.findViewById(R.id.txtAng);
-            img1 = (ImageView) itemView.findViewById(R.id.img1);
+            txtAng1 = (TextView)itemView.findViewById(R.id.txtAng1);
+
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override public void onClick(View v) {
                     posisi = getAdapterPosition();
 
-                    Context context = v.getContext();
-                    Intent i = new Intent(context,DialogBox.class);
-                    context.startActivity(i);
+                    DialogBox dialogBox = new DialogBox();
+                    itungBeresC = dialogBox.udah_quest;
+//
+//                    klik[posisi] += 1;
+                    klik[2] = itungBeresC;
+
+                    if(posisi == 2){
+                        if(klik[posisi]<2){
+                            Context context = v.getContext();
+                            Intent i = new Intent(context,DialogBox.class);
+                            context.startActivity(i);
+                        }
+                    }
+                    else{
+                        Context context = v.getContext();
+                        Intent i = new Intent(context,DialogBox.class);
+                        context.startActivity(i);
+                    }
+
+
 //                    Snackbar.make(v, "Click detected on item " + posisi,
 //                            Snackbar.LENGTH_LONG)
 //                            .setAction("Action", null).show();
@@ -74,6 +100,8 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
 
 
+
+
     @Override
     public RecyclerAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext())
@@ -86,6 +114,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     public void onBindViewHolder(RecyclerAdapter.ViewHolder holder, int position) {
         holder.txtHome.setText(Ket[position]);
         holder.txtAng.setText(Prog[position]);
+        holder.txtAng1.setText(target[position]);
         holder.img1.setImageResource(images[position]);
 
     }

@@ -50,10 +50,6 @@ public class HomeFragment extends Fragment {
         adapter = new RecyclerAdapter();
         recyclerView.setAdapter(adapter);
 
-        DialogBox dialogBox = new DialogBox();
-
-//        progres = dialogBox.selesai_culture*5;
-
         return v;
     }
 

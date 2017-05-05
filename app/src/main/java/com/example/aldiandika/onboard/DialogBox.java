@@ -21,6 +21,9 @@ public class DialogBox extends Activity {
     ImageView btn_bgKi;
     Button btn_tutup;
     public static int selesai_culture;
+    public static int  udah_quest;
+    public int criPos;
+
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
@@ -58,9 +61,19 @@ public class DialogBox extends Activity {
     }
 
     public void yes(View view){
+        RecyclerAdapter recyclerAdapter = new RecyclerAdapter();
+        criPos = recyclerAdapter.posisi;
+
+        if(criPos == 2){
+            if(udah_quest<2){
+                udah_quest +=1;
+                Toast.makeText(this,"Selesai " +udah_quest,Toast.LENGTH_SHORT).show();
+            }
+        }
         selesai_culture += 1;
+
         if(selesai_culture <11){
-            Toast.makeText(this,"Selesai " +selesai_culture,Toast.LENGTH_SHORT).show();
+//            Toast.makeText(this,"Selesai " +udah_quest,Toast.LENGTH_SHORT).show();
             finish();
         }
     }
