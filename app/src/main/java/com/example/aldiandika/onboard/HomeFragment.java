@@ -61,9 +61,12 @@ public class HomeFragment extends Fragment {
     public void onResume() {
         super.onResume();
         DialogBox dialogBox = new DialogBox();
+
         if(dialogBox.selesai_culture<11){
             progres = dialogBox.selesai_culture*10;
-            progBawah.setProgress(progres);
+            Anim_ProgressBar anim = new Anim_ProgressBar(progBawah, 0, progres);
+            anim.setDuration(1000);
+            progBawah.startAnimation(anim);
         }
     }
 }
