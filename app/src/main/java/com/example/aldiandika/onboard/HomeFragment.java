@@ -40,7 +40,7 @@ public class HomeFragment extends Fragment {
         progBawah = (ProgressBar) v.findViewById(R.id.progBawah);
         progBawah.getProgressDrawable().setColorFilter(Color.BLUE,
                 android.graphics.PorterDuff.Mode.SRC_IN);
-        progBawah.setMax(100);
+        progBawah.setMax(60);
 
         recyclerView = (RecyclerView) v.findViewById(R.id.recycler_view);
 

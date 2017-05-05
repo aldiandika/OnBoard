@@ -25,7 +25,10 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     public static int posisi;
     public int itungBeresA;
     public int itungBeresB;
-    public int itungBeresC;
+    public static int itungBeresC;
+    public  String brpQuestA;
+    public  String brpQuestB;
+    public  String brpQuestC;
 
 
     private String[] Ket = {"Perkenalan: Game Lead",
@@ -85,7 +88,6 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
                             Context context = v.getContext();
                             Intent i = new Intent(context,DialogBox.class);
                             context.startActivity(i);
-                            Prog[posisi] = String.valueOf(itungBeresA);
                         }
                     }
                     else if(posisi == 1){
@@ -93,7 +95,6 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
                             Context context = v.getContext();
                             Intent i = new Intent(context,DialogBox.class);
                             context.startActivity(i);
-                            Prog[posisi] = String.valueOf(itungBeresB);
                         }
                     }
                     else if(posisi == 2){
@@ -101,7 +102,6 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
                             Context context = v.getContext();
                             Intent i = new Intent(context,DialogBox.class);
                             context.startActivity(i);
-                            Prog[posisi] = String.valueOf(itungBeresC);
                         }
                     }
                     else{
@@ -139,8 +139,12 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(RecyclerAdapter.ViewHolder holder, int position) {
+        Prog[0] = brpQuestA;
+        Prog[1] = brpQuestB;
+        Prog[2] = "2";
+
         holder.txtHome.setText(Ket[position]);
-        holder.txtAng.setText(Prog[position]);
+        holder.txtAng.setText(String.valueOf(itungBeresC));
         holder.txtAng1.setText(target[position]);
         holder.img1.setImageResource(images[position]);
     }

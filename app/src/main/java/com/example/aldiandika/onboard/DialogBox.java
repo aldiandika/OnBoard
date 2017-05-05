@@ -24,6 +24,9 @@ public class DialogBox extends Activity {
     public static int  udah_questC;
     public static int  udah_questA;
     public static int  udah_questB;
+    public  String selese_questA;
+    public String selese_questB;
+    public String selese_questC;
 
     public int criPos;
 
@@ -70,20 +73,25 @@ public class DialogBox extends Activity {
         if(criPos == 0){
             if(udah_questA<2){
                 udah_questA +=1;
+                selese_questA = String.valueOf(udah_questA);
                 Toast.makeText(this,"Quest1 selesai " +udah_questA,Toast.LENGTH_SHORT).show();
             }
         }
         else if (criPos == 1){
             if(udah_questB<2){
                 udah_questB +=1;
+                selese_questA = String.valueOf(udah_questB);
                 Toast.makeText(this,"Quest2 selesai " +udah_questB,Toast.LENGTH_SHORT).show();
             }
+
         }
         if(criPos == 2){
             if(udah_questC<2){
                 udah_questC +=1;
+
                 Toast.makeText(this,"Quest3 selesai " +udah_questC,Toast.LENGTH_SHORT).show();
             }
+            selese_questA = "2";
         }
 
         selesai_culture += 1;
