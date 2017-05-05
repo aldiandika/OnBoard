@@ -21,7 +21,10 @@ public class DialogBox extends Activity {
     ImageView btn_bgKi;
     Button btn_tutup;
     public static int selesai_culture;
-    public static int  udah_quest;
+    public static int  udah_questC;
+    public static int  udah_questA;
+    public static int  udah_questB;
+
     public int criPos;
 
     @Override
@@ -64,18 +67,31 @@ public class DialogBox extends Activity {
         RecyclerAdapter recyclerAdapter = new RecyclerAdapter();
         criPos = recyclerAdapter.posisi;
 
-        if(criPos == 2){
-            if(udah_quest<2){
-                udah_quest +=1;
-                Toast.makeText(this,"Selesai " +udah_quest,Toast.LENGTH_SHORT).show();
+        if(criPos == 0){
+            if(udah_questA<2){
+                udah_questA +=1;
+                Toast.makeText(this,"Quest1 selesai " +udah_questA,Toast.LENGTH_SHORT).show();
             }
         }
+        else if (criPos == 1){
+            if(udah_questB<2){
+                udah_questB +=1;
+                Toast.makeText(this,"Quest2 selesai " +udah_questB,Toast.LENGTH_SHORT).show();
+            }
+        }
+        if(criPos == 2){
+            if(udah_questC<2){
+                udah_questC +=1;
+                Toast.makeText(this,"Quest3 selesai " +udah_questC,Toast.LENGTH_SHORT).show();
+            }
+        }
+
         selesai_culture += 1;
 
-        if(selesai_culture <11){
+//        if(selesai_culture <11){
 //            Toast.makeText(this,"Selesai " +udah_quest,Toast.LENGTH_SHORT).show();
             finish();
-        }
+//        }
     }
 
     public void balik(View view){

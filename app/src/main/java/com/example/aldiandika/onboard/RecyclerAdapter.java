@@ -23,6 +23,8 @@ import android.widget.Toast;
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
 
     public static int posisi;
+    public int itungBeresA;
+    public int itungBeresB;
     public int itungBeresC;
 
 
@@ -41,6 +43,10 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     private String[] target = {"2",
             "2",
             "2"};
+
+    public String[] tampil = {"0",
+            "0",
+            "0"};
 
     public int[] klik = new int[target.length];
 
@@ -65,16 +71,37 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
                     posisi = getAdapterPosition();
 
                     DialogBox dialogBox = new DialogBox();
-                    itungBeresC = dialogBox.udah_quest;
+                    itungBeresA = dialogBox.udah_questA;
+                    itungBeresB = dialogBox.udah_questB;
+                    itungBeresC = dialogBox.udah_questC;
 //
 //                    klik[posisi] += 1;
+                    klik[0] = itungBeresA;
+                    klik[1] = itungBeresB;
                     klik[2] = itungBeresC;
 
-                    if(posisi == 2){
+                    if(posisi == 0){
                         if(klik[posisi]<2){
                             Context context = v.getContext();
                             Intent i = new Intent(context,DialogBox.class);
                             context.startActivity(i);
+                            Prog[posisi] = String.valueOf(itungBeresA);
+                        }
+                    }
+                    else if(posisi == 1){
+                        if(klik[posisi]<2){
+                            Context context = v.getContext();
+                            Intent i = new Intent(context,DialogBox.class);
+                            context.startActivity(i);
+                            Prog[posisi] = String.valueOf(itungBeresB);
+                        }
+                    }
+                    else if(posisi == 2){
+                        if(klik[posisi]<2){
+                            Context context = v.getContext();
+                            Intent i = new Intent(context,DialogBox.class);
+                            context.startActivity(i);
+                            Prog[posisi] = String.valueOf(itungBeresC);
                         }
                     }
                     else{
@@ -116,7 +143,6 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         holder.txtAng.setText(Prog[position]);
         holder.txtAng1.setText(target[position]);
         holder.img1.setImageResource(images[position]);
-
     }
 
     @Override
