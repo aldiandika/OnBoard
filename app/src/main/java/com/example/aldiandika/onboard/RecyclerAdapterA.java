@@ -17,38 +17,35 @@ import android.widget.TextView;
 
 public class RecyclerAdapterA extends RecyclerView.Adapter<RecyclerAdapterA.ViewHolder> {
 
-    public int pos;
-    public static int posisi;
-
-    private String[] Ket = {"Perkenalan: Game Lead",
-            "Perkenalan: Kepala Departemen",
-            "Company Culture"};
-
-    private int[] images = { R.drawable.ic_action_name,
+    private int[] potoA = { R.drawable.ic_action_name,
             R.drawable.ic_action_name,
             R.drawable.ic_action_name };
 
-    private String[] Prog = {"0/2",
-            "0/2",
-            "0/2"};
+    private String[] namaA = {"First Time AR!",
+            "First Timer Quiz!",
+            "First Time Reading!"};
+
+    private String[] kegA = {"scan AR 2 kali",
+            "Jawab kuis 2 kali",
+            "Baca Company Culture"};
 
 
     class ViewHolder extends RecyclerView.ViewHolder{
 
-        public TextView txtHome;
-        public TextView txtAng;
-        public ImageView img1;
+        public TextView namaAchiev;
+        public TextView kegiatanAchiev;
+        public ImageView imgA;
 
 
         public ViewHolder(View itemView) {
             super(itemView);
-            txtHome = (TextView) itemView.findViewById(R.id.txtHome);
-            txtAng = (TextView)itemView.findViewById(R.id.txtAng);
-            img1 = (ImageView) itemView.findViewById(R.id.img1);
+            imgA = (ImageView) itemView.findViewById(R.id.imgA);
+            namaAchiev = (TextView) itemView.findViewById(R.id.namaAchiev);
+            kegiatanAchiev = (TextView)itemView.findViewById(R.id.kegiatanAchiev);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override public void onClick(View v) {
-                    posisi = getAdapterPosition();
+                    int posisi = getAdapterPosition();
 
 //                    Context context = v.getContext();
 //                    Intent i = new Intent(context,DialogBox.class);
@@ -67,22 +64,22 @@ public class RecyclerAdapterA extends RecyclerView.Adapter<RecyclerAdapterA.View
     @Override
     public RecyclerAdapterA.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.card_layout1, parent, false);
+                .inflate(R.layout.card_layout_achiev, parent, false);
         ViewHolder viewHolder = new ViewHolder(v);
         return viewHolder;
     }
 
     @Override
     public void onBindViewHolder(RecyclerAdapterA.ViewHolder holder, int position) {
-        holder.txtHome.setText(Ket[position]);
-        holder.txtAng.setText(Prog[position]);
-        holder.img1.setImageResource(images[position]);
+        holder.imgA.setImageResource(potoA[position]);
+        holder.namaAchiev.setText(namaA[position]);
+        holder.kegiatanAchiev.setText(kegA[position]);
 
     }
 
     @Override
     public int getItemCount() {
-        return Ket.length;
+        return namaA.length;
 //        return pos;
     }
 }
