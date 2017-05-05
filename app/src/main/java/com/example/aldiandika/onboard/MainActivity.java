@@ -111,6 +111,8 @@ public class MainActivity extends FragmentActivity {
 
 }
 
+//Update
+
 //    private void initializeHorizontalTabs() {
 //        LinearLayout ll = (LinearLayout) tabWidget.getParent();
 //        horizontalScrollView = new HorizontalScrollView(this);
