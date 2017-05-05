@@ -26,14 +26,13 @@
             android:layout_margin="16dp"
             android:textStyle="bold"
             android:textSize="18sp"
-            android:text="Timeline"/>
+            android:text="Achievement"/>
     </LinearLayout>
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler_viewT"
+        android:id="@+id/recycler_viewA"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="8dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
-
 </LinearLayout>

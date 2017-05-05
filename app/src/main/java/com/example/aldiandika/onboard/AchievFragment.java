@@ -10,21 +10,20 @@ import android.view.View;
 import android.view.ViewGroup;
 
 /**
- * Created by Crew on 5/3/2017.
+ * Created by Crew on 5/5/2017.
  */
 
-public class TimeFragment extends Fragment {
+public class AchievFragment extends Fragment {
 
     RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
     RecyclerView.Adapter adapter;
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.timeline_fragment, container, false);
+        View v = inflater.inflate(R.layout.achiev_fragment, container, false);
 
-        recyclerView = (RecyclerView) v.findViewById(R.id.recycler_viewT);
+        recyclerView = (RecyclerView) v.findViewById(R.id.recycler_viewA);
 
         layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);

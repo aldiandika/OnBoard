@@ -46,6 +46,12 @@ public class MainActivity extends FragmentActivity {
         tabhost.addTab(
                 tabhost.newTabSpec("Timeline").setIndicator(null, getResources().getDrawable(R.drawable.tab_time)),
                 TimeFragment.class, null);
+        tabhost.addTab(
+                tabhost.newTabSpec("Achievement").setIndicator(null, getResources().getDrawable(R.drawable.tab_achiev)),
+                AchievFragment.class, null);
+        tabhost.addTab(
+                tabhost.newTabSpec("Profile").setIndicator(null,getResources().getDrawable(R.drawable.tab_profile)),
+                ProfFragment.class, null);
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         secPage = new SectionPageAdapter(getSupportFragmentManager());
         pager = (ViewPager) findViewById(R.id.pager);
@@ -97,6 +103,8 @@ public class MainActivity extends FragmentActivity {
         SectionPageAdapter adapter = new SectionPageAdapter(getSupportFragmentManager());
         adapter.addFragment(new HomeFragment(),tabhost.getCurrentTabTag());
         adapter.addFragment(new TimeFragment(),tabhost.getCurrentTabTag());
+        adapter.addFragment(new AchievFragment(),tabhost.getCurrentTabTag());
+        adapter.addFragment(new ProfFragment(),tabhost.getCurrentTabTag());
         pager.setAdapter(adapter);
     }
 
