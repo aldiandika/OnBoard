@@ -56,11 +56,6 @@ public class RecyclerAdapterT extends RecyclerView.Adapter<RecyclerAdapterT.View
 //                    Snackbar.make(v, "Click detected on item " + posisi,
 //                            Snackbar.LENGTH_LONG)
 //                            .setAction("Action", null).show();
-                    Dialog dialog;
-                    dialog = new Dialog(v.getContext());
-                    dialog.setContentView(R.layout.dialog_company);
-                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                    dialog.show();
                 }
 
             });

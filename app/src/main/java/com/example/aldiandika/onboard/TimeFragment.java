@@ -15,22 +15,22 @@ import android.view.ViewGroup;
 
 public class TimeFragment extends Fragment {
 
-    RecyclerView recyclerView;
-    RecyclerView.LayoutManager layoutManager;
-    RecyclerView.Adapter adapter;
+    RecyclerView recyclerViewT;
+    RecyclerView.LayoutManager layoutManagerT;
+    RecyclerView.Adapter adapterT;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.timeline_fragment, container, false);
 
-        recyclerView = (RecyclerView) v.findViewById(R.id.recycler_viewT);
+        recyclerViewT = (RecyclerView) v.findViewById(R.id.recycler_viewT);
 
-        layoutManager = new LinearLayoutManager(getActivity());
-        recyclerView.setLayoutManager(layoutManager);
+        layoutManagerT = new LinearLayoutManager(getActivity());
+        recyclerViewT.setLayoutManager(layoutManagerT);
 
-        adapter = new RecyclerAdapter();
-        recyclerView.setAdapter(adapter);
+        adapterT = new RecyclerAdapterT();
+        recyclerViewT.setAdapter(adapterT);
         return v;
     }
 }

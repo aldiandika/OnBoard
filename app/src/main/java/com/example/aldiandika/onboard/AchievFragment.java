@@ -15,21 +15,21 @@ import android.view.ViewGroup;
 
 public class AchievFragment extends Fragment {
 
-    RecyclerView recyclerView;
-    RecyclerView.LayoutManager layoutManager;
-    RecyclerView.Adapter adapter;
+    RecyclerView recyclerViewA;
+    RecyclerView.LayoutManager layoutManagerA;
+    RecyclerView.Adapter adapterA;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.achiev_fragment, container, false);
 
-        recyclerView = (RecyclerView) v.findViewById(R.id.recycler_viewA);
+        recyclerViewA = (RecyclerView) v.findViewById(R.id.recycler_viewA);
 
-        layoutManager = new LinearLayoutManager(getActivity());
-        recyclerView.setLayoutManager(layoutManager);
+        layoutManagerA = new LinearLayoutManager(getActivity());
+        recyclerViewA.setLayoutManager(layoutManagerA);
 
-        adapter = new RecyclerAdapter();
-        recyclerView.setAdapter(adapter);
+        adapterA = new RecyclerAdapterA();
+        recyclerViewA.setAdapter(adapterA);
         return v;
     }
 }
