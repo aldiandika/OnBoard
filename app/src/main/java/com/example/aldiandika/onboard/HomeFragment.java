@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.renderscript.Sampler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.CardView;
@@ -14,6 +15,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ProgressBar;
+import android.widget.Toast;
 
 
 /**
@@ -25,16 +28,19 @@ public class HomeFragment extends Fragment {
     RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
     RecyclerView.Adapter adapter;
-    int pos;
+    int progres;
+    ProgressBar progBawah;
+    String tampil;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.home_fragment, container, false);
 
-//        Dialog dialog;
-//        dialog = new Dialog(getActivity());
-//        udahBaca = (Button) dialog.findViewById(R.id.udahBaca);
+        progBawah = (ProgressBar) v.findViewById(R.id.progBawah);
+        progBawah.getProgressDrawable().setColorFilter(Color.BLUE,
+                android.graphics.PorterDuff.Mode.SRC_IN);
+        progBawah.setMax(100);
 
         recyclerView = (RecyclerView) v.findViewById(R.id.recycler_view);
 
@@ -44,7 +50,21 @@ public class HomeFragment extends Fragment {
         adapter = new RecyclerAdapter();
         recyclerView.setAdapter(adapter);
 
+        DialogBox dialogBox = new DialogBox();
+
+//        progres = dialogBox.selesai_culture*5;
+
         return v;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        DialogBox dialogBox = new DialogBox();
+        if(dialogBox.selesai_culture<11){
+            progres = dialogBox.selesai_culture*10;
+            progBawah.setProgress(progres);
+        }
     }
 }
 

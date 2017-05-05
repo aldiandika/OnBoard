@@ -1,40 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#80000000"
+    android:orientation="vertical"
     tools:context="com.example.aldiandika.onboard.DialogBox">
 
-    <Button
+    <ImageView
+        android:id="@+id/btn_bgA"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="invisible"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@android:color/transparent"
         android:onClick="balik"/>
 
-    <RelativeLayout
-        android:layout_width="280dp"
-        android:layout_height="500dp"
-        android:layout_gravity="center"
-        android:layout_centerInParent="true"
-        android:background="@android:color/darker_gray"
-        android:padding="8dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:layout_weight="14">
 
-        <Button
-            android:id="@+id/tutup"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
-            android:layout_alignParentRight="true"
+        <ImageView
+            android:id="@+id/btn_bgki"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
             android:onClick="balik"/>
-        <Button
-            android:id="@+id/udahBaca"
-            android:layout_width="2700dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerInParent="true"
-            android:onClick="udah"/>
 
-    </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/layout_depan"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="9"
+            android:padding="8dp">
 
-</RelativeLayout>
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/darker_gray"
+                android:padding="8dp"
+                android:clickable="false"/>
+
+            <Button
+                android:id="@+id/btn_tutup"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_margin="6dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:onClick="balik"/>
+            <Button
+                android:id="@+id/udahBaca"
+                android:layout_width="2700dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerInParent="true"
+                android:onClick="yes"/>
+
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/btn_bgka"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:onClick="balik"/>
+
+    </LinearLayout>
+
+
+    <ImageView
+        android:id="@+id/btn_bgB"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@android:color/transparent"
+        android:onClick="balik"/>
+
+</LinearLayout>
