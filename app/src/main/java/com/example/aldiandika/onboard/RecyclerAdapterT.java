@@ -17,45 +17,50 @@ import android.widget.TextView;
 
 public class RecyclerAdapterT extends RecyclerView.Adapter<RecyclerAdapterT.ViewHolder> {
 
-    public int pos;
-    public static int posisi;
 
-    private String[] Ket = {"Perkenalan: Game Lead",
-            "Perkenalan: Kepala Departemen",
-            "Company Culture"};
-
-    private int[] images = { R.drawable.ic_action_name,
+    private int[] poto = { R.drawable.ic_action_name,
+            R.drawable.ic_action_name,
+            R.drawable.ic_action_name,
             R.drawable.ic_action_name,
             R.drawable.ic_action_name };
 
-    private String[] Prog = {"0/2",
-            "0/2",
-            "0/2"};
+    private String[] nama = {"Felix",
+            "Densup",
+            "Densup",
+            "Densup",
+            "Densup"};
+
+    private String[] kgt = {"Telah Menjawab Kuis Tentang Game Lead",
+            "Telah Menyelesaikan Scan AR : ADITIA_DWIPERDANA",
+            "Telah Menyelesaikan Scan AR : TEDY_ARIAN",
+            "Telah Menyelesaikan Quest 1",
+            "Telah Menyelesaikan Quest 2"};
+
+    private String[] tanggal = {"2/4/2017",
+            "2/4/2017",
+            "2/4/2017",
+            "2/4/2017",
+            "2/4/2017",};
 
 
     class ViewHolder extends RecyclerView.ViewHolder{
 
-        public TextView txtHome;
-        public TextView txtAng;
-        public ImageView img1;
+        public TextView namaTime;
+        public TextView tgl;
+        public ImageView imgT;
+        public TextView kegiatan;
 
 
         public ViewHolder(View itemView) {
             super(itemView);
-            txtHome = (TextView) itemView.findViewById(R.id.txtHome);
-            txtAng = (TextView)itemView.findViewById(R.id.txtAng);
-            img1 = (ImageView) itemView.findViewById(R.id.img1);
+            namaTime = (TextView) itemView.findViewById(R.id.namaTime);
+            tgl = (TextView)itemView.findViewById(R.id.tgl);
+            imgT = (ImageView) itemView.findViewById(R.id.imgT);
+            kegiatan = (TextView) itemView.findViewById(R.id.kegiatan);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override public void onClick(View v) {
-                    posisi = getAdapterPosition();
-
-//                    Context context = v.getContext();
-//                    Intent i = new Intent(context,DialogBox.class);
-//                    context.startActivity(i);
-//                    Snackbar.make(v, "Click detected on item " + posisi,
-//                            Snackbar.LENGTH_LONG)
-//                            .setAction("Action", null).show();
+                  int  posisi = getAdapterPosition();
                 }
 
             });
@@ -67,22 +72,22 @@ public class RecyclerAdapterT extends RecyclerView.Adapter<RecyclerAdapterT.View
     @Override
     public RecyclerAdapterT.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.card_layout1, parent, false);
+                .inflate(R.layout.card_layout_time, parent, false);
         ViewHolder viewHolder = new ViewHolder(v);
         return viewHolder;
     }
 
     @Override
     public void onBindViewHolder(RecyclerAdapterT.ViewHolder holder, int position) {
-        holder.txtHome.setText(Ket[position]);
-        holder.txtAng.setText(Prog[position]);
-        holder.img1.setImageResource(images[position]);
-
+        holder.imgT.setImageResource(poto[position]);
+        holder.namaTime.setText(nama[position]);
+        holder.kegiatan.setText(kgt[position]);
+        holder.tgl.setText(tanggal[position]);
     }
 
     @Override
     public int getItemCount() {
-        return Ket.length;
+        return nama.length;
 //        return pos;
     }
 }

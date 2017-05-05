@@ -32,8 +32,7 @@
     <ProgressBar
         android:id="@+id/progBawah"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
+        android:layout_height="20dp"
         android:padding="2dp"
         style="?android:attr/progressBarStyleHorizontal"
         android:progress="50" />

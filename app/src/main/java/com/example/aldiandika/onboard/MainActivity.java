@@ -47,10 +47,10 @@ public class MainActivity extends FragmentActivity {
                 tabhost.newTabSpec("Timeline").setIndicator(null, getResources().getDrawable(R.drawable.tab_time)),
                 TimeFragment.class, null);
         tabhost.addTab(
-                tabhost.newTabSpec("Achievement").setIndicator(null, getResources().getDrawable(R.drawable.tab_achiev)),
+                tabhost.newTabSpec("Achievement").setIndicator(null, getResources().getDrawable(R.drawable.tab_achieve)),
                 AchievFragment.class, null);
         tabhost.addTab(
-                tabhost.newTabSpec("Profile").setIndicator(null,getResources().getDrawable(R.drawable.tab_profile)),
+                tabhost.newTabSpec("Profile").setIndicator(null,getResources().getDrawable(R.drawable.tab_prof)),
                 ProfFragment.class, null);
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         secPage = new SectionPageAdapter(getSupportFragmentManager());
