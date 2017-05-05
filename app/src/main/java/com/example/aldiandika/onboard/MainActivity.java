@@ -21,13 +21,17 @@ public class MainActivity extends FragmentActivity {
     FragmentTabHost tabhost;
     ViewPager pager;
     SectionPageAdapter secPage;
+    View decorView;
 
 //    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+//        setContentView(R.layout.immersive_activity);
 
+
+        decorView = getWindow().getDecorView();
         progAtas = (ProgressBar) findViewById(R.id.progAtas);
         progAtas.getProgressDrawable().setColorFilter(
                 Color.RED, android.graphics.PorterDuff.Mode.SRC_IN);
@@ -37,11 +41,17 @@ public class MainActivity extends FragmentActivity {
         tabhost.setup(this, getSupportFragmentManager(), android.R.id.tabcontent);
 
         tabhost.addTab(
-                tabhost.newTabSpec("home").setIndicator("Home", null),
+                tabhost.newTabSpec("home").setIndicator(null,getResources().getDrawable(R.drawable.tab_home)),
                 HomeFragment.class, null);
         tabhost.addTab(
-                tabhost.newTabSpec("Timeline").setIndicator("Timeline", null),
+                tabhost.newTabSpec("Timeline").setIndicator(null, getResources().getDrawable(R.drawable.tab_time)),
                 TimeFragment.class, null);
+        tabhost.addTab(
+                tabhost.newTabSpec("Achievement").setIndicator(null, getResources().getDrawable(R.drawable.tab_achiev)),
+                AchievFragment.class, null);
+        tabhost.addTab(
+                tabhost.newTabSpec("Profile").setIndicator(null,getResources().getDrawable(R.drawable.tab_profile)),
+                ProfFragment.class, null);
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         secPage = new SectionPageAdapter(getSupportFragmentManager());
         pager = (ViewPager) findViewById(R.id.pager);
@@ -68,18 +78,33 @@ public class MainActivity extends FragmentActivity {
             @Override
             public void onTabChanged(String tabId) {
                 pager.setCurrentItem(tabhost.getCurrentTab());
-//                scrollToCurrentTab();
             }
         });
 
+
     }
 
+
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        if (hasFocus) {
+            decorView.setSystemUiVisibility(
+                    View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                            | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                            | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                            | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION // hide nav bar
+                            | View.SYSTEM_UI_FLAG_FULLSCREEN // hide status bar
+                            | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);}
+    }
 
 
     private void setupViewPager(ViewPager pager){
         SectionPageAdapter adapter = new SectionPageAdapter(getSupportFragmentManager());
         adapter.addFragment(new HomeFragment(),tabhost.getCurrentTabTag());
         adapter.addFragment(new TimeFragment(),tabhost.getCurrentTabTag());
+        adapter.addFragment(new AchievFragment(),tabhost.getCurrentTabTag());
+        adapter.addFragment(new ProfFragment(),tabhost.getCurrentTabTag());
         pager.setAdapter(adapter);
     }
 
