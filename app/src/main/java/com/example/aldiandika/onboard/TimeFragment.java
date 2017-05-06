@@ -33,4 +33,14 @@ public class TimeFragment extends Fragment {
         recyclerViewT.setAdapter(adapterT);
         return v;
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        layoutManagerT = new LinearLayoutManager(getActivity());
+        recyclerViewT.setLayoutManager(layoutManagerT);
+
+        adapterT = new RecyclerAdapterT();
+        recyclerViewT.setAdapter(adapterT);
+    }
 }

@@ -32,4 +32,14 @@ public class AchievFragment extends Fragment {
         recyclerViewA.setAdapter(adapterA);
         return v;
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        layoutManagerA = new LinearLayoutManager(getActivity());
+        recyclerViewA.setLayoutManager(layoutManagerA);
+
+        adapterA = new RecyclerAdapterA();
+        recyclerViewA.setAdapter(adapterA);
+    }
 }

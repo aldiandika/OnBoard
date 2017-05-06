@@ -10,6 +10,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -26,9 +28,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     public int itungBeresA;
     public int itungBeresB;
     public static int itungBeresC;
-    public  String brpQuestA;
-    public  String brpQuestB;
-    public  String brpQuestC;
+    private int lastPosition = -1;
 
 
     private String[] Ket = {"Perkenalan: Game Lead",
@@ -152,6 +152,20 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         holder.txtAng.setText(Prog[position]);
         holder.txtAng1.setText(target[position]);
         holder.img1.setImageResource(images[position]);
+        setAnimation(holder.itemView, position);
+    }
+
+    private void setAnimation(View viewToAnimate, int position)
+    {
+        // If the bound view wasn't previously displayed on screen, it's animated
+        if (position > lastPosition)
+        {
+            Animation animation = AnimationUtils.loadAnimation(viewToAnimate.getContext(),
+                    android.R.anim.fade_in);
+            animation.setDuration(1000);
+            viewToAnimate.startAnimation(animation);
+            lastPosition = position;
+        }
     }
 
     @Override

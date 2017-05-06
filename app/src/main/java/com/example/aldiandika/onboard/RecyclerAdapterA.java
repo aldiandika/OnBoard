@@ -7,6 +7,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -16,6 +18,8 @@ import android.widget.TextView;
  */
 
 public class RecyclerAdapterA extends RecyclerView.Adapter<RecyclerAdapterA.ViewHolder> {
+
+    private int lastPosition = -1;
 
     private int[] potoA = { R.drawable.ic_action_name,
             R.drawable.ic_action_name,
@@ -74,9 +78,21 @@ public class RecyclerAdapterA extends RecyclerView.Adapter<RecyclerAdapterA.View
         holder.imgA.setImageResource(potoA[position]);
         holder.namaAchiev.setText(namaA[position]);
         holder.kegiatanAchiev.setText(kegA[position]);
-
+        setAnimation(holder.itemView, position);
     }
 
+    private void setAnimation(View viewToAnimate, int position)
+    {
+        // If the bound view wasn't previously displayed on screen, it's animated
+        if (position > lastPosition)
+        {
+            Animation animation = AnimationUtils.loadAnimation(viewToAnimate.getContext(),
+                    android.R.anim.fade_in);
+            animation.setDuration(1000);
+            viewToAnimate.startAnimation(animation);
+            lastPosition = position;
+        }
+    }
     @Override
     public int getItemCount() {
         return namaA.length;
