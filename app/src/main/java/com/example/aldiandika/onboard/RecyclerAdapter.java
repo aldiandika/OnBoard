@@ -139,12 +139,17 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(RecyclerAdapter.ViewHolder holder, int position) {
-        Prog[0] = brpQuestA;
-        Prog[1] = brpQuestB;
-        Prog[2] = "2";
+        DialogBox dialogBox = new DialogBox();
+        itungBeresA = dialogBox.udah_questA;
+        itungBeresB = dialogBox.udah_questB;
+        itungBeresC = dialogBox.udah_questC;
+
+        Prog[0] = String.valueOf(itungBeresA);
+        Prog[1] = String.valueOf(itungBeresB);
+        Prog[2] = String.valueOf(itungBeresC);
 
         holder.txtHome.setText(Ket[position]);
-        holder.txtAng.setText(String.valueOf(itungBeresC));
+        holder.txtAng.setText(Prog[position]);
         holder.txtAng1.setText(target[position]);
         holder.img1.setImageResource(images[position]);
     }

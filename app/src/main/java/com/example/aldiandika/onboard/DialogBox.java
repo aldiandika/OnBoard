@@ -75,6 +75,7 @@ public class DialogBox extends Activity {
                 udah_questA +=1;
                 selese_questA = String.valueOf(udah_questA);
                 Toast.makeText(this,"Quest1 selesai " +udah_questA,Toast.LENGTH_SHORT).show();
+                finish();
             }
         }
         else if (criPos == 1){
@@ -82,6 +83,7 @@ public class DialogBox extends Activity {
                 udah_questB +=1;
                 selese_questA = String.valueOf(udah_questB);
                 Toast.makeText(this,"Quest2 selesai " +udah_questB,Toast.LENGTH_SHORT).show();
+                finish();
             }
 
         }
@@ -90,6 +92,7 @@ public class DialogBox extends Activity {
                 udah_questC +=1;
 
                 Toast.makeText(this,"Quest3 selesai " +udah_questC,Toast.LENGTH_SHORT).show();
+                finish();
             }
             selese_questA = "2";
         }
@@ -98,7 +101,7 @@ public class DialogBox extends Activity {
 
 //        if(selesai_culture <11){
 //            Toast.makeText(this,"Selesai " +udah_quest,Toast.LENGTH_SHORT).show();
-            finish();
+
 //        }
     }
 

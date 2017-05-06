@@ -1,6 +1,7 @@
 package com.example.aldiandika.onboard;
 
 import android.app.Dialog;
+import android.content.ClipData;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -50,12 +51,20 @@ public class HomeFragment extends Fragment {
         adapter = new RecyclerAdapter();
         recyclerView.setAdapter(adapter);
 
+
         return v;
     }
 
     @Override
     public void onResume() {
         super.onResume();
+//        recyclerView = (RecyclerView) v.findViewById(R.id.recycler_view);
+        layoutManager = new LinearLayoutManager(getActivity());
+        recyclerView.setLayoutManager(layoutManager);
+
+        adapter = new RecyclerAdapter();
+        recyclerView.setAdapter(adapter);
+
         DialogBox dialogBox = new DialogBox();
 
         if(dialogBox.selesai_culture<11){
